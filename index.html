@@ -4,30 +4,35 @@
   <meta charset="UTF-8">
   <title>Hey Mohit!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Import Google Font Poppins -->
+
+  <!-- Font Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      background: #d0e8f2; /* biru pastel */
+      background: #d0e8f2;
       font-family: 'Poppins', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       text-align: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 20px;
       margin: 0;
     }
 
     h1 {
-      font-size: 1.8rem;
+      font-size: 6vw;
+      max-width: 100%;
       border-right: 2px solid black;
       white-space: nowrap;
       overflow: hidden;
       animation: typing 3s steps(30, end), blink 0.75s step-end infinite;
-      max-width: 90%;
     }
 
     @keyframes typing {
@@ -40,9 +45,14 @@
       50% { border-color: black; }
     }
 
+    p {
+      font-size: 4.5vw;
+      margin-top: 10px;
+    }
+
     .emoji {
-      font-size: 2.5rem;
-      margin-top: 20px;
+      font-size: 8vw;
+      margin: 20px 0;
       animation: bounce 1s infinite alternate;
     }
 
@@ -52,12 +62,12 @@
     }
 
     button {
-      margin-top: 30px;
-      padding: 10px 25px;
-      font-size: 1rem;
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 4vw;
       border: none;
       border-radius: 25px;
-      background-color: #6ec5e9; /* aksen biru */
+      background-color: #6ec5e9;
       color: white;
       cursor: pointer;
       transition: background-color 0.3s;
@@ -72,7 +82,7 @@
     #secret {
       display: none;
       margin-top: 20px;
-      font-size: 1.1rem;
+      font-size: 4vw;
       color: #31708e;
       animation: fadeIn 1s ease-in-out;
     }
@@ -83,9 +93,8 @@
     }
 
     footer {
-      position: absolute;
-      bottom: 10px;
-      font-size: 0.8rem;
+      margin-top: 40px;
+      font-size: 3vw;
       color: #555;
     }
 
@@ -100,20 +109,30 @@
   <p>Have you smiled today? 😊</p>
   <div class="emoji">💙</div>
 
-  <button onclick="showSecret()">Click me!</button>
+  <button onclick="playSound(); showSecret()">Click me!</button>
   <div id="secret">If you smiled... then my mission is complete 😚✨</div>
 
   <footer>Made with 💙 by Nana</footer>
 
-  <!-- MUSIC PLAYER -->
+  <!-- Background MUSIC -->
   <audio autoplay loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/10/22/audio_d398abf5d0.mp3?filename=chilling-ambient-12200.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Click SFX -->
+  <audio id="clickSound">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/22/audio_efc2913a92.mp3?filename=pop-94319.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <script>
     function showSecret() {
       document.getElementById("secret").style.display = "block";
+    }
+
+    function playSound() {
+      document.getElementById("clickSound").play();
     }
   </script>
 
